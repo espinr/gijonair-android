@@ -1,7 +1,7 @@
 GijonAir
 ========
 
-<img src="http://gijonair.es/img/nube_gijonair.png" alt="GijónAir" />
+<img src="http://panel.gijonair.es/static/img/gijon_air_1024.jpg" alt="GijónAir" />
 
 App for Android to monitor the pollution levels of the city of Gijón/Xixón. 
 Users can check the quality of the air at a glance.
@@ -13,4 +13,4 @@ It's only in Spanish but it's prepared to be localized into other languages.
 
 <h2>Screenshot</h2>
 
-<img width="300" src="http://gijonair.es/img/screenshot.png" alt="Screenshot of GijonAir"/>
+<img width="300" src="http://panel.gijonair.es/static/img/screenshot.jpg" alt="Screenshot of GijonAir"/>
