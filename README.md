@@ -13,4 +13,4 @@ It's only in Spanish but it's prepared to be localized into other languages.
 
 <h2>Screenshot</h2>
 
-<img width="300" src="http://panel.gijonair.es/static/img/screenshot.jpg" alt="Screenshot of GijonAir"/>
+<img width="300" src="http://panel.gijonair.es/static/img/screenshot.png" alt="Screenshot of GijonAir"/>
