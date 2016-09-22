@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/menu/about.xml",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/menu/about.xml"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/menu/stations.xml",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/menu/stations.xml"
+    }
+]

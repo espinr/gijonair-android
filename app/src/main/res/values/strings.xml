@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GijonAir</string>
+    <string name="app_version">Versión 0.1.5</string>
+    <string name="action_about">Información</string>
+    <string name="values_of">Valores de</string>
+    <string name="description">CONTAMINACIÓN ATMOSFÉRICA EN GIJÓN</string>
+    <string name="about_the_app_text">GijonAir</string>
+    <string name="issues">Envía tus sugerencias o comentarios para mejorar la aplicación desde\n
+        https://github.com/espinr/GijonAir/issues</string>
+    <string name="leyend">Esta aplicación muestra información sobre la calidad del aire en la ciudad de Gijón a través de la Red de Medida de la Calidad del Aire de Gijón y publicada como parte de su iniciativa de Open Data. 
+        Cinco estaciones automáticas donde se recogen periódicamente los datos de diversos contaminantes atmosféricos en medias quinceminutales y los ofrecen públicamente a través del sitio Web (http://www.gijon.eu/documentos/departamentos/ma/estaciones/index.html) y como un fichero JSON (http://opendata.gijon.es/descargar.php?id=1&amp;tipo=JSON)\n\n
+        Los valores están pendientes de validación y son mostrados en el sitio con una actualización horaria. Se corresponden a la media de las últimas 24h de los siguientes indicadores:\n
+ - PM10: Partículas en suspensión menores de 10 µm\n
+ - PM2.5: Partículas en suspensión menores de 2,5 µm\n
+ - SO2: Dióxido de azufre\n
+ - NOx: Oxidos de nitrógeno\n
+ - CO: Monóxido de carbono\n
+ - O3: Ozono\n
+ - Pb: Plomo\n
+ - COV: Compuestos orgánicos volátiles\n
+ - C6H6: Benceno\n
+ - Tolueno\n
+ - Meta-xileno"</string>
+ 	<string name="text_disclaimer">Esta aplicación usa los datos del sitio web del Ayuntamiento de Gijón. Estos pueden contener errores, ya que no han sido validados.\n\n
+Los autores de los iconos de la aplicación son:\n
+- Skull and crossbones: de Brianna Reed (http://thenounproject.com/nerdettedesigns/)\n
+- Cloud: de Hunotika (http://thenounproject.com/hunotika)\n
+- Info: de Ricardo Augusto Cherem (http://thenounproject.com/ricardo.cherem/)\n
+- Refresh: de Karsten Barnett (http://thenounproject.com/karsten.barnett.9/)
+ 	    </string>
+    <string name="url_source_origin">http://www.gijon.eu/documentos/departamentos/ma/estaciones/index.html</string>
+    <string name="updated">Datos recogidos</string>
+    <string name="text_refresh">Actualizar</string>
+    <string name="spinner_loading_stations_title">Actualizando datos</string>
+    <string name="spinner_loading_stations">Obteniendo los últimos datos registrados…</string>
+    <string name="spinner_loading_stations_cancel">Upps… No se han podido cargar todos los datos. Inténtalo en un par de minutos.</string>
+    <string name="text_stations_loaded">estaciones cargadas con la última configuración</string>
+    <!-- Dialog when no connection available -->
+    <string name="dialog_no_internet_title">Actualizando las estaciones</string>
+    <string name="dialog_no_internet_description">Upps… No se han podido cargar todos los datos.\nComprueba que tienes conexión a internet e inténtalo de nuevo.</string>
+    <string name="dialog_no_internet_button_retry">Reintentar</string>
+    <string name="dialog_no_internet_button_cancel">Cancelar</string>
+    
+    <string name="text_station">Estación</string>
+    <string name="title_activity_about">Información</string>
+    <string name="title_section_leyend">Los Datos</string>
+    <string name="title_section_stations">Las Estaciones</string>
+    <string name="title_section_about">La Aplicación</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="url_stations_json">http://data.gijonair.es/estaciones.json</string>
+    <string name="json_label_ica">ica</string>
+    <string name="json_label_value">value</string>
+    <string name="json_label_indicator">indicator</string>
+    <string name="json_label_name">label</string>
+    <string name="json_label_url">url</string>
+    <string name="json_label_time">time</string>
+    <string name="text_verypoor">Muy Mala</string>
+    <string name="text_poor">Mala</string>
+    <string name="text_good">Buena</string>
+    <string name="text_verygood">Muy Buena</string>
+    <string name="unit_measure">µg/m3</string>
+    <string name="no_available">No Disponible</string>
+    
+    <string name="indicator_symbol_pm10">PM10</string>
+    <string name="indicator_symbol_pm25">PM2.5</string>
+    <string name="indicator_symbol_so2">SO2</string>
+    <string name="indicator_symbol_no">NOx</string>
+    <string name="indicator_symbol_o3">O3</string>
+    <string name="indicator_symbol_ben">Ben</string>
+    <string name="indicator_symbol_co">CO</string>
+
+    <string name="indicator_text_pm10">PM10µm</string>
+    <string name="indicator_text_pm25">PM2,5µm</string>
+    <string name="indicator_text_so2">SO2 (Dióxido de azufre)</string>
+    <string name="indicator_text_no">NO (Óxidos de nitrógeno)</string>
+    <string name="indicator_text_o3">O3 (Ozono)</string>
+    <string name="indicator_text_ben">C6H6 (Benceno)</string>
+    <string name="indicator_text_co">CO (Monóxido de carbono)</string>
+    
+    <!-- Date operations -->
+    <string name="date_since">hace</string>    
+    <string name="date_day">un día</string>
+    <string name="date_days">días</string>
+    <string name="date_yesterday">ayer</string>
+    <string name="date_hour">una hora</string>
+    <string name="date_hours">horas</string>
+    <string name="date_minute">un minuto</string>
+    <string name="date_minutes">minutos</string>    
+</resources>

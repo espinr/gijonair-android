@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/refresh.png",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/refresh.png"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/buena.png",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/buena.png"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/mala.png",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/mala.png"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/na.png",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/na.png"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/nd.png",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/nd.png"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/mapaestaciones.png",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/mapaestaciones.png"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/muymala.png",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/muymala.png"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/info.png",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/info.png"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/muybuena.png",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/muybuena.png"
+    }
+]
