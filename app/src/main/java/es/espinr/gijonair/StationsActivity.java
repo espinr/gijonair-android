@@ -12,7 +12,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import es.espinr.gijonair.ScrollableSwipeRefreshLayout.OnChildScrollUpListener;
 
 /**
@@ -20,16 +26,20 @@ import es.espinr.gijonair.ScrollableSwipeRefreshLayout.OnChildScrollUpListener;
  *
  */
 public class StationsActivity extends ActionBarActivity implements ScrollableSwipeRefreshLayout.OnRefreshListener {
-	
 
+	private FirebaseAnalytics mFirebaseAnalytics;
     private LinearLayout viewStations;
     private ScrollableSwipeRefreshLayout swipeContainer;
     private Timer autoUpdate;
     private boolean isInForegroundMode;
+	private static final String TAG = "StationsActivity";
+	private static final String GENERAL_TOPIC_NAME = "alerts";
     
     protected void onCreate(Bundle bundle)
     {
         super.onCreate(bundle);
+		// Obtain the FirebaseAnalytics instance.
+		mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         setContentView(R.layout.activity_stations);
         viewStations = (LinearLayout) findViewById(R.id.viewStations);
         
@@ -39,25 +49,30 @@ public class StationsActivity extends ActionBarActivity implements ScrollableSwi
 
         // Stops the execution until the Internet connection is available 
         if (!AirStationsUtil.isInternetAvailable(this)) {
-        	Log.d("GIJON", "No internet available");
+        	Log.d(StationsActivity.TAG, "No internet available");
         	AlertDialog alert = AirStationsUtil.createAlertDialogNoDataLoaded(this);
         	alert.show();
         	return;
         }
-                        
-        // in order to avoid the swipe when the user wants to perform scroll
-        swipeContainer.setOnChildScrollUpListener(new OnChildScrollUpListener() {
-        	  @Override
-        	  public boolean canChildScrollUp() {
-        		  if (viewStations.getChildCount()>0) {
-        			  return viewStations.getChildAt(0).isShown();
-        		  }
-        		  return false;
-        	  }
-        	});
 
-        // When the task returns it will load the latest values
-        swipeContainer.setRefreshing(false);
+		// This is to log an event to check where user clicks
+		/*bundle.putString(FirebaseAnalytics.Param.ITEM_ID, id);
+		bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, name);
+		bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "image");
+		mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
+		*/
+		FirebaseMessaging.getInstance().subscribeToTopic(GENERAL_TOPIC_NAME);
+
+		// Just then the Y value of the scroll is 0, refresh swipe can be performed
+		final ScrollView sv = (ScrollView) findViewById(R.id.viewScroll);
+		sv.getViewTreeObserver().addOnScrollChangedListener(
+				new ViewTreeObserver.OnScrollChangedListener() {
+					@Override public void onScrollChanged() {
+						boolean firstStationShown = sv.getScrollY()==0;
+						swipeContainer.setEnabled(firstStationShown);
+						swipeContainer.setActivated(firstStationShown);
+					}
+				});
     }
 
     /**
