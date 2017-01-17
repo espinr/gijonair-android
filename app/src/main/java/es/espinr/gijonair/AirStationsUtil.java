@@ -4,6 +4,11 @@
 package es.espinr.gijonair;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetAddress;
 
 import android.app.AlertDialog;
@@ -26,6 +31,8 @@ import android.widget.LinearLayout;
  *         connection, etc.
  */
 public class AirStationsUtil {
+
+	private static final String TAG = "AirStationsUtil";
 
 	/**
 	 * @return true if Internet connection is available, false if not.
@@ -59,10 +66,23 @@ public class AirStationsUtil {
 	public static void clearFileCache(String filename) {
 		File file = new File(filename);
 
-		if (file.exists() && file.delete()) {
-			Log.d("GIJON", "Fichero local " + filename + " borrado");
+		if (file.exists() &&  file.delete()) {
+			Log.d(TAG, "Fichero local " + filename + " borrado");
 		}
 		return;
+	}
+
+	/**
+	 * Create a backup of the existing cached file.
+	 */
+	public static boolean backupFile(File source, File dest) throws IOException {
+		Log.d(TAG, "Backup of " + source + " as " + dest);
+		if (source.exists()) {
+			source.renameTo(dest);
+			Log.d(TAG, "Local file " + source + " now is " + dest);
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -112,7 +132,7 @@ public class AirStationsUtil {
 						LinearLayout viewStations = (LinearLayout) layout.findViewById(R.id.viewStations);
 
 						// Caches the file (asynchronously) when clicks retry
-						StationsFileCacher stationsfilecacher = new StationsFileCacher(c);
+						StationsFileCacher stationsfilecacher = new StationsFileCacher(c,true);
 				        stationsfilecacher.execute(viewStations, c.getString(R.string.url_stations_json));
 				        // When the task returns it will load the latest values	
 					}

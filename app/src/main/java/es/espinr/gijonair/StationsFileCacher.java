@@ -1,6 +1,7 @@
 package es.espinr.gijonair;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,9 +28,12 @@ import android.widget.Toast;
 public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 
 	public static String LOCAL_FILENAME = "stations.json";
+	public static String LOCAL_BACKUP_FILENAME = "stations_back.json";
+	private static final String TAG = "StationsFileCacher";
 	private Context mContext;
 	private View view;
 	private ProgressDialog dialog;
+	private boolean needsUpdate;
 
 	/**
 	 * Read all the content from the reader. 
@@ -53,9 +57,10 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 	/**
 	 * @param context	The context to be stored.
 	 */
-	public StationsFileCacher(Context context) {
+	public StationsFileCacher(Context context, boolean needsUpdate) {
 		this.mContext = context;
 		this.dialog = new ProgressDialog(context);
+		this.needsUpdate = needsUpdate;
 	}
 	
 	
@@ -66,8 +71,8 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 	protected void onPreExecute() {
 		super.onPreExecute();
 		dialog = AirStationsUtil.createProgressDialogLoading(mContext);
-		dialog.show();		
-		AirStationsUtil.clearFileCache(LOCAL_FILENAME);
+		dialog.show();
+		//AirStationsUtil.clearFileCache(LOCAL_FILENAME);
 	}
 
 
@@ -81,36 +86,56 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 	@Override
 	protected String doInBackground(Object... params) {
 		String s = "" ;
-    	try {
-    		view = (View) params[0];
-	        InputStream inputstream;
-	        URL url = new URL((String)params[1]);
-	        
-	        inputstream = url.openStream();
-	        s = readAll(new BufferedReader(new InputStreamReader(inputstream, Charset.forName("UTF-8"))));
-	        Log.d("GIJON", (new StringBuilder("Leyendo el fichero ")).append(url.toString()).append(": ").append(s).toString());
-	        inputstream.close();
+		view = (View) params[0];
 
-    	} catch (IOException e) {
-            Log.e("GIJON", (new StringBuilder("ERROR al leer el fichero ")).append(params[1]).append(":\n").append(e.getMessage()).toString());
-            return null;
-    	}
-    	try {
-	        // Caches the file as stations.json
-			FileOutputStream fileoutputstream = mContext.openFileOutput(LOCAL_FILENAME, 0);
-			fileoutputstream.write(s.getBytes());
-			fileoutputstream.close();
-			
-	        Log.d("GIJON", "Fichero local " + LOCAL_FILENAME + " escrito");
+		if (needsUpdate) {
+			try {
 
-    	} catch (IOException e) {
-            Log.e("GIJON", (new StringBuilder("ERROR al escribir el fichero ")).append(LOCAL_FILENAME).append(":\n").append(e.getMessage()).toString());
-            return null;
-        }
-	        
+				InputStream inputstream;
+				URL url = new URL((String)params[1]);
+
+				inputstream = url.openStream();
+				s = readAll(new BufferedReader(new InputStreamReader(inputstream, Charset.forName("UTF-8"))));
+				Log.d(TAG, (new StringBuilder("Leyendo el fichero ")).append(url.toString()).append(": ").append(s).toString());
+				inputstream.close();
+				if (s.trim().length()==0){
+					revertDBFileFromBackup();
+					return s;
+				}
+			} catch (IOException e) {
+				Log.e(TAG, (new StringBuilder("ERROR al leer el feed ")).append(params[1]).append(":\n").append(e.getMessage()).toString());
+				return null;
+			}
+			try {
+				backupDBFile();
+				// Caches the file as stations.json
+				FileOutputStream fileoutputstream = mContext.openFileOutput(LOCAL_FILENAME, 0);
+				fileoutputstream.write(s.getBytes());
+				fileoutputstream.close();
+				Log.d(TAG, "Local file " + LOCAL_FILENAME + " written");
+			} catch (IOException e) {
+				Log.e(TAG, (new StringBuilder("ERROR al escribir el fichero ")).append(LOCAL_FILENAME).append(":\n").append(e.getMessage()).toString());
+				revertDBFileFromBackup();
+			}
+		}
 		return s;
     }
-	
+
+	protected void backupDBFile() {
+		try {
+			AirStationsUtil.backupFile(mContext.getFileStreamPath(LOCAL_FILENAME), mContext.getFileStreamPath(LOCAL_BACKUP_FILENAME));
+		} catch (IOException e) {
+			Log.e(TAG, "Error making a copy of the DB. Perhaps the original " + LOCAL_FILENAME + " does not exist");
+		}
+	}
+
+	protected void revertDBFileFromBackup() {
+		try {
+			AirStationsUtil.backupFile(mContext.getFileStreamPath(LOCAL_BACKUP_FILENAME), mContext.getFileStreamPath(LOCAL_FILENAME));
+		} catch (IOException e) {
+			Log.e(TAG, "Error reverting a copy of the DB.");
+		}
+	}
 
 
 	protected void onPostExecute(String s) {
@@ -120,12 +145,6 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 			if (s==null) {
 				this.dialog.dismiss();
 	            AirStationsUtil.createAlertDialogNoDataLoaded(this.mContext).show();
-
-//				AlertDialog alertDialog = AirStationsUtil.createAlertDialogNoDataLoaded(this.mContext);
-//				alertDialog.show();				
-//				Toast.makeText(
-//						mContext,
-//						mContext.getString(R.string.text_stations_loaded_error),Toast.LENGTH_SHORT).show();			
 				return;
 			}
 			
@@ -136,7 +155,7 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 			AirStationsLoader stationLoader = new AirStationsLoader(mContext, linearlayout);
 			int i = stationLoader.execute();
 			
-			Log.d("GIJON", "Cargadas "+ i +" estaciones ");
+			Log.d(TAG, "Cargadas "+ i +" estaciones ");
 			
 			// close the dialog and shows the number of stations loaded
 			if (dialog.isShowing()) {
@@ -148,9 +167,11 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 					(new StringBuilder(String.valueOf(i))).append(" ")
 							.append(mContext.getString(R.string.text_stations_loaded)).toString(),Toast.LENGTH_SHORT).show();
 		} catch (Exception exception) {
-			Log.e("GIJON", (new StringBuilder("ERROR al escribir el fichero "))
+			exception.printStackTrace();
+			Log.e(TAG, (new StringBuilder("ERROR al escribir el fichero "))
 					.append(LOCAL_FILENAME).append("\n").append(exception.getMessage())
 					.toString());
+			this.dialog.dismiss();
 		}
 		return;
 	}
@@ -161,9 +182,6 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 	@Override
 	protected void onCancelled() {
 		super.onCancelled();
-//    	AlertDialog alert = AirStationsUtil.createAlertDialogNoDataLoaded(this.mContext);
-//    	alert.show();
-		
 	}
 
 	/* (non-Javadoc)

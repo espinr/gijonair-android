@@ -1,11 +1,13 @@
 package es.espinr.gijonair;
 
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
@@ -30,14 +32,21 @@ public class StationsActivity extends ActionBarActivity implements ScrollableSwi
 	private FirebaseAnalytics mFirebaseAnalytics;
     private LinearLayout viewStations;
     private ScrollableSwipeRefreshLayout swipeContainer;
+	private SharedPreferences mPrefs;
     private Timer autoUpdate;
     private boolean isInForegroundMode;
 	private static final String TAG = "StationsActivity";
 	private static final String GENERAL_TOPIC_NAME = "alerts";
+	private Date nextUpdate = null;
+	private long UPDATE_FREQUENCY_IN_MS = 10 * 60000;
+	private String KEY_UPDATE_FREQUENCY_MILLIS = "UPDATE_FREQUENCY";
     
-    protected void onCreate(Bundle bundle)
-    {
+    protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+
+		if (nextUpdate == null) {
+			nextUpdate = new Date(1); // past
+		}
 		// Obtain the FirebaseAnalytics instance.
 		mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         setContentView(R.layout.activity_stations);
@@ -62,18 +71,33 @@ public class StationsActivity extends ActionBarActivity implements ScrollableSwi
 		mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
 		*/
 		FirebaseMessaging.getInstance().subscribeToTopic(GENERAL_TOPIC_NAME);
+		Log.d(TAG, "Subscribed to notifications: " + GENERAL_TOPIC_NAME);
 
 		// Just then the Y value of the scroll is 0, refresh swipe can be performed
 		final ScrollView sv = (ScrollView) findViewById(R.id.viewScroll);
 		sv.getViewTreeObserver().addOnScrollChangedListener(
 				new ViewTreeObserver.OnScrollChangedListener() {
 					@Override public void onScrollChanged() {
-						boolean firstStationShown = sv.getScrollY()==0;
-						swipeContainer.setEnabled(firstStationShown);
-						swipeContainer.setActivated(firstStationShown);
+						boolean isFirstStationShown = sv.getScrollY()==0;
+						swipeContainer.setEnabled(isFirstStationShown);
+						swipeContainer.setActivated(isFirstStationShown);
 					}
 				});
     }
+
+	@Override
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		if (savedInstanceState.containsKey(KEY_UPDATE_FREQUENCY_MILLIS)) {
+			this.nextUpdate = new Date(savedInstanceState.getLong(KEY_UPDATE_FREQUENCY_MILLIS));
+		}
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		outState.putLong(KEY_UPDATE_FREQUENCY_MILLIS, this.nextUpdate.getTime());
+		super.onSaveInstanceState(outState);
+	}
 
     /**
      * Function to auto-update values
@@ -83,35 +107,20 @@ public class StationsActivity extends ActionBarActivity implements ScrollableSwi
     	super.onResume();
     	// In case the app is visible
     	isInForegroundMode = true;
-    	autoUpdate = new Timer();
-    	autoUpdate.schedule(new TimerTask() {
-    		@Override
-    		public void run() {
-    			runOnUiThread(new Runnable() {
-    				public void run() {
-    					updateStations();
-    				}
-    			});
-    		}
-    	}, 0, 600000); // updates each 10 minutes
-    }
-    
-    @Override
+		updateStations();
+	}
+
+	@Override
+	public void onRefresh() {
+		updateStations();
+	}
+
+	@Override
     protected void onPause() {
         super.onPause();
         isInForegroundMode = false;
     }
 
-    
-    protected void updateStations() {
-    	// If the app is in foreground mode
-    	if (isInForegroundMode) {
-            // Caches the file (asynchronously)
-            StationsFileCacher stationsfilecacher = new StationsFileCacher(this);
-            stationsfilecacher.execute(viewStations, this.getString(R.string.url_stations_json));	
-    	}
-    }
-    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -125,7 +134,6 @@ public class StationsActivity extends ActionBarActivity implements ScrollableSwi
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        StationsFileCacher stationsfilecacher = new StationsFileCacher(this);
     	Intent intent = new Intent(this, AboutActivity.class);
         switch (id) {
 			case R.id.action_about:
@@ -135,42 +143,43 @@ public class StationsActivity extends ActionBarActivity implements ScrollableSwi
 	        	this.startActivity(intent);
 	            return true;
 			case R.id.action_refresh:
-		        // Caches the file (asynchronously) and loads the stations that gets
-		        stationsfilecacher.execute(viewStations, this.getString(R.string.url_stations_json));			
+				updateStations();
 		        return true;
 			case R.id.action_refresh_icon:
-		        // Caches the file (asynchronously) and loads the stations that gets
-		        stationsfilecacher.execute(viewStations, this.getString(R.string.url_stations_json));			
-		        return true;
+				updateStations();
+				return true;
 			default:
 				break;
 		}
         return super.onOptionsItemSelected(item);
     }
 
-	@Override
-	public void onRefresh() {
-		RefreshThread refreshThread = new RefreshThread(this);
-		new Handler().postDelayed( refreshThread , 100);	
-		
+	private void updateStations(){
+		boolean needsUpdate = new Date().after(nextUpdate);
+		if (needsUpdate)
+			nextUpdate = new Date(new Date().getTime() + UPDATE_FREQUENCY_IN_MS);
+		RefreshThread refreshThread = new RefreshThread(this, needsUpdate);
+		new Handler().post(refreshThread);
 	}
 
 	/*
 	 * Class to run the refresh after swipe
 	 */
 	public class RefreshThread implements Runnable {
-		 private Context mContext;
+		private Context mContext;
+		private boolean needsUpdate;
 
-		 public RefreshThread(Context context) {
-		       this.mContext = context;
-		   }
+		 public RefreshThread(Context context, boolean needsUpdate) {
+			 this.mContext = context;
+			 this.needsUpdate = needsUpdate;
+		 }
 
 		@Override
 		public void run() {
-      	  // Update the content
-      	  StationsFileCacher stationsfilecacher = new StationsFileCacher(mContext);
-      	  stationsfilecacher.execute(viewStations, mContext.getString(R.string.url_stations_json));
-      	  swipeContainer.setRefreshing(false);			
+      	  	// Update the content if the date now is after nextUpdate
+			StationsFileCacher stationsfilecacher = new StationsFileCacher(mContext, needsUpdate);
+			stationsfilecacher.execute(viewStations, mContext.getString(R.string.url_stations_json));
+			swipeContainer.setRefreshing(false);
 		}
 	}
     

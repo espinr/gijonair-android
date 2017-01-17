@@ -29,6 +29,7 @@ public class AirStationsLoader {
 	private AirStation airStationsArray[];
 	private Context mContext;
 	private LinearLayout stationsContainer;
+	private static final String TAG = "GijonAir";
 
 	public AirStationsLoader(Context context, LinearLayout linearlayout) {
 		mContext = context;
@@ -56,7 +57,87 @@ public class AirStationsLoader {
 		try {
 			jsonArray = new JSONArray(stringbuffer.toString());
 		} catch (JSONException e) {
-        	Log.e("GIJON", (new StringBuilder("Error al cargar el JSON: ")).append(s).toString());
+        	Log.e(TAG, (new StringBuilder("Error al cargar el JSON: ")).append(s).toString());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		}
        	
        	if (jsonArray==null) {
@@ -91,13 +172,13 @@ public class AirStationsLoader {
 				}
 			}
 			
-			stations[i] = new AirStation(airStationLabel, airStationDateTime, indicators, values, icas);
+			stations[i] = new AirStation(airStationLabel.replace("&#225;","á"), airStationDateTime, indicators, values, icas);
 			
 		}
         } catch (IOException ioexception) {
-            Log.e("GIJON", (new StringBuilder("Error al abrir el fichero con el JSON: ")).append(StationsFileCacher.LOCAL_FILENAME).toString());
+            Log.e(TAG, (new StringBuilder("Error al abrir el fichero con el JSON: ")).append(StationsFileCacher.LOCAL_FILENAME).toString());
         } catch (JSONException e) {
-        	Log.e("GIJON", (new StringBuilder("Error al cargar el JSON\n")).append(e.getMessage()).toString());
+        	Log.e(TAG, (new StringBuilder("Error al cargar el JSON\n")).append(e.getMessage()).toString());
 		}
         return stations;
     }
@@ -152,7 +233,7 @@ public class AirStationsLoader {
 				updatedText.setSingleLine();
 				linearlayout.addView(updatedText);
 			} catch (ParseException e) {
-				Log.e("GIJON", "Error al parsear la fecha " + airstation.getTime());
+				Log.e(TAG, "Error al parsear la fecha " + airstation.getTime());
 			}
 
 			GridView gridview = new GridView(mContext);
