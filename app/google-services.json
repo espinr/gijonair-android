@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "647040496115",
+    "firebase_url": "https://gijonair-android.firebaseio.com",
+    "project_id": "gijonair-android",
+    "storage_bucket": "gijonair-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647040496115:android:880786dc0a8d5797",
+        "android_client_info": {
+          "package_name": "es.espinr.gijonair"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "647040496115-m7mr1mm6prr0a58cdkmivr5katvhkogn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "es.espinr.gijonair",
+            "certificate_hash": "C3031C642FB698CB46CF9313C9FD0A5C9F8F270F"
+          }
+        },
+        {
+          "client_id": "647040496115-mrs8ba09s5c6joar01i5a3vohdi6q2fm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJGSHDM1_PCeGMv1xyGUvWBWBBArxsyvA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647040496115-mrs8ba09s5c6joar01i5a3vohdi6q2fm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

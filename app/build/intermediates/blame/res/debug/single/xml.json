@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/xml/pref_data_sync.xml",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/xml/pref_data_sync.xml"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/xml/pref_headers.xml",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/xml/pref_headers.xml"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/xml/pref_notification.xml",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/xml/pref_notification.xml"
+    }
+]

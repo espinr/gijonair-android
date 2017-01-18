@@ -6,18 +6,18 @@
                 "to": {
                     "startLine": 2,
                     "startColumn": 4,
-                    "startOffset": 55,
+                    "startOffset": 105,
                     "endColumn": 117,
-                    "endOffset": 168
+                    "endOffset": 218
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 3,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 56,
+                        "startOffset": 55,
                         "endColumn": 117,
-                        "endOffset": 169
+                        "endOffset": 168
                     }
                 }
             },
@@ -25,18 +25,18 @@
                 "to": {
                     "startLine": 3,
                     "startColumn": 4,
-                    "startOffset": 173,
-                    "endColumn": 110,
-                    "endOffset": 279
+                    "startOffset": 223,
+                    "endColumn": 107,
+                    "endOffset": 326
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 174,
-                        "endColumn": 110,
-                        "endOffset": 280
+                        "startOffset": 173,
+                        "endColumn": 107,
+                        "endOffset": 276
                     }
                 }
             },
@@ -44,18 +44,18 @@
                 "to": {
                     "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 284,
-                    "endColumn": 116,
-                    "endOffset": 396
+                    "startOffset": 331,
+                    "endColumn": 122,
+                    "endOffset": 449
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 285,
-                        "endColumn": 116,
-                        "endOffset": 397
+                        "startOffset": 281,
+                        "endColumn": 122,
+                        "endOffset": 399
                     }
                 }
             },
@@ -63,18 +63,18 @@
                 "to": {
                     "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 401,
-                    "endColumn": 84,
-                    "endOffset": 481
+                    "startOffset": 454,
+                    "endColumn": 110,
+                    "endOffset": 560
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 402,
-                        "endColumn": 84,
-                        "endOffset": 482
+                        "startOffset": 404,
+                        "endColumn": 110,
+                        "endOffset": 510
                     }
                 }
             },
@@ -82,18 +82,18 @@
                 "to": {
                     "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 486,
-                    "endColumn": 104,
-                    "endOffset": 586
+                    "startOffset": 565,
+                    "endColumn": 116,
+                    "endOffset": 677
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 487,
-                        "endColumn": 104,
-                        "endOffset": 587
+                        "startOffset": 515,
+                        "endColumn": 116,
+                        "endOffset": 627
                     }
                 }
             },
@@ -101,18 +101,18 @@
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 591,
-                    "endColumn": 125,
-                    "endOffset": 712
+                    "startOffset": 682,
+                    "endColumn": 84,
+                    "endOffset": 762
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 592,
-                        "endColumn": 125,
-                        "endOffset": 713
+                        "startOffset": 632,
+                        "endColumn": 84,
+                        "endOffset": 712
                     }
                 }
             },
@@ -120,18 +120,18 @@
                 "to": {
                     "startLine": 8,
                     "startColumn": 4,
-                    "startOffset": 717,
-                    "endColumn": 110,
-                    "endOffset": 823
+                    "startOffset": 767,
+                    "endColumn": 104,
+                    "endOffset": 867
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 718,
-                        "endColumn": 110,
-                        "endOffset": 824
+                        "startOffset": 717,
+                        "endColumn": 104,
+                        "endOffset": 817
                     }
                 }
             },
@@ -139,18 +139,18 @@
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 828,
-                    "endColumn": 109,
-                    "endOffset": 933
+                    "startOffset": 872,
+                    "endColumn": 125,
+                    "endOffset": 993
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 829,
-                        "endColumn": 109,
-                        "endOffset": 934
+                        "startOffset": 822,
+                        "endColumn": 125,
+                        "endOffset": 943
                     }
                 }
             },
@@ -158,18 +158,18 @@
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 938,
-                    "endColumn": 101,
-                    "endOffset": 1035
+                    "startOffset": 998,
+                    "endColumn": 87,
+                    "endOffset": 1081
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 939,
-                        "endColumn": 101,
-                        "endOffset": 1036
+                        "startOffset": 948,
+                        "endColumn": 87,
+                        "endOffset": 1031
                     }
                 }
             },
@@ -177,18 +177,18 @@
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 1040,
-                    "endColumn": 110,
-                    "endOffset": 1146
+                    "startOffset": 1086,
+                    "endColumn": 85,
+                    "endOffset": 1167
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 1041,
-                        "endColumn": 110,
-                        "endOffset": 1147
+                        "startOffset": 1036,
+                        "endColumn": 85,
+                        "endOffset": 1117
                     }
                 }
             },
@@ -196,18 +196,18 @@
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 1151,
-                    "endColumn": 108,
-                    "endOffset": 1255
+                    "startOffset": 1172,
+                    "endColumn": 84,
+                    "endOffset": 1252
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 1152,
-                        "endColumn": 108,
-                        "endOffset": 1256
+                        "startOffset": 1122,
+                        "endColumn": 84,
+                        "endOffset": 1202
                     }
                 }
             },
@@ -215,18 +215,18 @@
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 1260,
-                    "endColumn": 107,
+                    "startOffset": 1257,
+                    "endColumn": 110,
                     "endOffset": 1363
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 1261,
-                        "endColumn": 107,
-                        "endOffset": 1364
+                        "startOffset": 1207,
+                        "endColumn": 110,
+                        "endOffset": 1313
                     }
                 }
             },
@@ -235,17 +235,188 @@
                     "startLine": 14,
                     "startColumn": 4,
                     "startOffset": 1368,
-                    "endColumn": 122,
-                    "endOffset": 1486
+                    "endColumn": 109,
+                    "endOffset": 1473
                 },
                 "from": {
-                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-el/values.xml",
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1318,
+                        "endColumn": 109,
+                        "endOffset": 1423
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1478,
+                    "endColumn": 101,
+                    "endOffset": 1575
+                },
+                "from": {
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 1369,
+                        "startOffset": 1428,
+                        "endColumn": 101,
+                        "endOffset": 1525
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1580,
+                    "endColumn": 110,
+                    "endOffset": 1686
+                },
+                "from": {
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1530,
+                        "endColumn": 110,
+                        "endOffset": 1636
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1691,
+                    "endColumn": 108,
+                    "endOffset": 1795
+                },
+                "from": {
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1641,
+                        "endColumn": 108,
+                        "endOffset": 1745
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1800,
+                    "endColumn": 107,
+                    "endOffset": 1903
+                },
+                "from": {
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1750,
+                        "endColumn": 107,
+                        "endOffset": 1853
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1908,
+                    "endColumn": 122,
+                    "endOffset": 2026
+                },
+                "from": {
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1858,
                         "endColumn": 122,
-                        "endOffset": 1487
+                        "endOffset": 1976
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 2031,
+                    "endColumn": 99,
+                    "endOffset": 2126
+                },
+                "from": {
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1981,
+                        "endColumn": 99,
+                        "endOffset": 2076
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 2131,
+                    "endColumn": 222,
+                    "endOffset": 2349
+                },
+                "from": {
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/res/values-el/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 0,
+                        "startOffset": 285,
+                        "endColumn": 222,
+                        "endOffset": 507
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2354,
+                    "endColumn": 84,
+                    "endOffset": 2434
+                },
+                "from": {
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 2081,
+                        "endColumn": 84,
+                        "endOffset": 2161
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 2439,
+                    "endColumn": 100,
+                    "endOffset": 2535
+                },
+                "from": {
+                    "file": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/values-el/values-el.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 2166,
+                        "endColumn": 100,
+                        "endOffset": 2262
                     }
                 }
             }

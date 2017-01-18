@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 20
+    compileSdkVersion 25
     buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "es.espinr.gijonair"
         minSdkVersion 16
-        targetSdkVersion 20
+        targetSdkVersion 21
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
@@ -19,6 +20,15 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:20.0.0'
-    compile 'com.android.support:appcompat-v7:20.0.0'
+    compile 'com.android.support:support-v4:25.+'
+    compile 'com.android.support:appcompat-v7:25.+'
+    compile 'com.google.firebase:firebase-core:10.0.1'
+    compile 'com.google.firebase:firebase-messaging:10.0.1'
+    compile 'com.android.support:support-vector-drawable:25.+'
 }
+
+
+
+
+
+apply plugin: 'com.google.gms.google-services'

@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">GijonAir</string>
     <string name="app_version">Versión 0.1.5</string>
-    <string name="action_about">Información</string>
+    <string name="action_about">Acerca de…</string>
     <string name="values_of">Valores de</string>
     <string name="description">CONTAMINACIÓN ATMOSFÉRICA EN GIJÓN</string>
     <string name="about_the_app_text">GijonAir</string>
@@ -24,10 +24,11 @@
  - Meta-xileno"</string>
  	<string name="text_disclaimer">Esta aplicación usa los datos del sitio web del Ayuntamiento de Gijón. Estos pueden contener errores, ya que no han sido validados.\n\n
 Los autores de los iconos de la aplicación son:\n
-- Skull and crossbones: de Brianna Reed (http://thenounproject.com/nerdettedesigns/)\n
-- Cloud: de Hunotika (http://thenounproject.com/hunotika)\n
-- Info: de Ricardo Augusto Cherem (http://thenounproject.com/ricardo.cherem/)\n
-- Refresh: de Karsten Barnett (http://thenounproject.com/karsten.barnett.9/)
+- Skull and crossbones: de Brianna Reed (Noun Project)\n
+- Cloud: de Hunotika (Noun Project)\n
+- Info: de Ricardo Augusto Cherem (Noun Project)\n
+- Refresh: de Karsten Barnett (Noun Project)\n
+- Settings: de mikicon (Noun Project)
  	    </string>
     <string name="url_source_origin">http://www.gijon.eu/documentos/departamentos/ma/estaciones/index.html</string>
     <string name="updated">Datos recogidos</string>
@@ -41,14 +42,13 @@ Los autores de los iconos de la aplicación son:\n
     <string name="dialog_no_internet_description">Upps… No se han podido cargar todos los datos.\nComprueba que tienes conexión a internet e inténtalo de nuevo.</string>
     <string name="dialog_no_internet_button_retry">Reintentar</string>
     <string name="dialog_no_internet_button_cancel">Cancelar</string>
-    
+
     <string name="text_station">Estación</string>
     <string name="title_activity_about">Información</string>
     <string name="title_section_leyend">Los Datos</string>
     <string name="title_section_stations">Las Estaciones</string>
     <string name="title_section_about">La Aplicación</string>
     <string name="action_settings">Ajustes</string>
-    <string name="url_stations_json">http://data.gijonair.es/estaciones.json</string>
     <string name="json_label_ica">ica</string>
     <string name="json_label_value">value</string>
     <string name="json_label_indicator">indicator</string>
@@ -61,7 +61,7 @@ Los autores de los iconos de la aplicación son:\n
     <string name="text_verygood">Muy Buena</string>
     <string name="unit_measure">µg/m3</string>
     <string name="no_available">No Disponible</string>
-    
+
     <string name="indicator_symbol_pm10">PM10</string>
     <string name="indicator_symbol_pm25">PM2.5</string>
     <string name="indicator_symbol_so2">SO2</string>
@@ -77,14 +77,44 @@ Los autores de los iconos de la aplicación son:\n
     <string name="indicator_text_o3">O3 (Ozono)</string>
     <string name="indicator_text_ben">C6H6 (Benceno)</string>
     <string name="indicator_text_co">CO (Monóxido de carbono)</string>
-    
+
     <!-- Date operations -->
-    <string name="date_since">hace</string>    
+    <string name="date_since">hace</string>
     <string name="date_day">un día</string>
     <string name="date_days">días</string>
     <string name="date_yesterday">ayer</string>
     <string name="date_hour">una hora</string>
     <string name="date_hours">horas</string>
     <string name="date_minute">un minuto</string>
-    <string name="date_minutes">minutos</string>    
+    <string name="date_minutes">minutos</string>
+    <string name="title_activity_settings">Ajustes</string>
+
+
+    <!-- Strings related to Settings -->
+
+    <string name="pref_title_settings">Ajustes</string>
+    <string name="pref_header_data_sync">Actualización</string>
+    <string name="pref_title_sync_frequency">Frecuencia de actualización</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>10 minutos</item>
+        <item>15 minutos</item>
+        <item>30 minutos</item>
+        <item>1 hora</item>
+        <item>Nunca</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>10</item>
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">Ajustes de actualización</string>
+
+    <string name="pref_header_notifications">Notificaciones</string>
+    <string name="pref_title_new_message_notifications">Recibir alertas</string>
+    <string name="pref_title_ringtone">Tono</string>
+    <string name="pref_ringtone_silent">Silencio</string>
+    <string name="pref_title_vibrate">Vibración</string>
 </resources>

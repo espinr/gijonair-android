@@ -1,7 +1,7 @@
-#Thu Sep 22 09:45:00 WEST 2016
+#Wed Jan 18 17:26:22 CET 2017
 base.0=/Users/martin/git/gijonair-android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c3fd1685c66c24cd0481dd93e87cdac7a97ba085
-renamed.1=classes.dex
-renamed.0=classes2.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
 file.1=/Users/martin/git/gijonair-android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_0040c751eab76dc9e1daf4560b914116f0269cad/classes.dex
 base.1=/Users/martin/git/gijonair-android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_0040c751eab76dc9e1daf4560b914116f0269cad
 file.0=/Users/martin/git/gijonair-android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c3fd1685c66c24cd0481dd93e87cdac7a97ba085/classes.dex

@@ -1,36 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
+    abi="armeabi-v7a,armeabi"
     api-level="23"
     density="xxhdpi"
     format="8"
-    plugin-version="2.2.0"
-    timestamp="138551259810425"
+    plugin-version="2.2.3"
+    timestamp="32228026572070"
     token="-449427872446190253"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="634" />
+        duration="461" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="557" />
+        duration="91" />
     <task
         name="verifier"
-        duration="35" />
+        duration="5" />
 
     <artifact
-        location="/Users/martin/git/gijonair-android/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
+        location="/Users/martin/git/gijonair-android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex"
+        type="DEX" />
 
     <build
-        timestamp="138551259810425"
+        timestamp="29579484843185"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/martin/git/gijonair-android/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
+    </build>
+    <build
+        timestamp="31724445339459"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/martin/git/gijonair-android/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+            type="RESOURCES" />
+    </build>
+    <build
+        timestamp="32228026572070"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/martin/git/gijonair-android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex"
+            type="DEX" />
     </build>
 
 </instant-run>

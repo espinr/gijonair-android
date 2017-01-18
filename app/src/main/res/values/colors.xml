@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="abc_search_url_text_normal">#ff7fa87f</color>
-    <item type="color" name="abc_search_url_text_selected">@*android:color/black</item>
-    <item type="color" name="abc_search_url_text_pressed">@*android:color/black</item>
+    <color name="abc_search_url_text_selected">#000000</color>
+    <color name="abc_search_url_text_pressed">#000000</color>
     <color name="background_color">#ffffffff</color>
     <color name="forefront_color">#ff585858</color>
     <color name="title_back">#ff000000</color>
     <color name="title_front">#ffffffff</color>
     <color name="station_indicator_front">#ffe1f5c4</color>
+    <color name="notification">#ffe1f5c4</color>
 </resources>
