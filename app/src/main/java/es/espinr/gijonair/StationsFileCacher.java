@@ -96,14 +96,14 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 
 				inputstream = url.openStream();
 				s = readAll(new BufferedReader(new InputStreamReader(inputstream, Charset.forName("UTF-8"))));
-				Log.d(TAG, (new StringBuilder("Leyendo el fichero ")).append(url.toString()).append(": ").append(s).toString());
+				Log.d(TAG, (new StringBuilder("Reading file at ")).append(url.toString()).append(": ").append(s).toString());
 				inputstream.close();
 				if (s.trim().length()==0){
 					revertDBFileFromBackup();
 					return s;
 				}
 			} catch (IOException e) {
-				Log.e(TAG, (new StringBuilder("ERROR al leer el feed ")).append(params[1]).append(":\n").append(e.getMessage()).toString());
+				Log.e(TAG, (new StringBuilder("ERROR when reading feed ")).append(params[1]).append(":\n").append(e.getMessage()).toString());
 				return null;
 			}
 			try {
@@ -114,7 +114,7 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 				fileoutputstream.close();
 				Log.d(TAG, "Local file " + LOCAL_FILENAME + " written");
 			} catch (IOException e) {
-				Log.e(TAG, (new StringBuilder("ERROR al escribir el fichero ")).append(LOCAL_FILENAME).append(":\n").append(e.getMessage()).toString());
+				Log.e(TAG, (new StringBuilder("ERROR writing file")).append(LOCAL_FILENAME).append(":\n").append(e.getMessage()).toString());
 				revertDBFileFromBackup();
 			}
 		}
@@ -155,7 +155,7 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 			AirStationsLoader stationLoader = new AirStationsLoader(mContext, linearlayout);
 			int i = stationLoader.execute();
 			
-			Log.d(TAG, "Cargadas "+ i +" estaciones ");
+			Log.d(TAG, "Loaded "+ i +" stations ");
 			
 			// close the dialog and shows the number of stations loaded
 			if (dialog.isShowing()) {
@@ -168,7 +168,7 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 							.append(mContext.getString(R.string.text_stations_loaded)).toString(),Toast.LENGTH_SHORT).show();
 		} catch (Exception exception) {
 			exception.printStackTrace();
-			Log.e(TAG, (new StringBuilder("ERROR al escribir el fichero "))
+			Log.e(TAG, (new StringBuilder("ERROR writing file"))
 					.append(LOCAL_FILENAME).append("\n").append(exception.getMessage())
 					.toString());
 			this.dialog.dismiss();

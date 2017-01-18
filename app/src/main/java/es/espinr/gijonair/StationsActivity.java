@@ -37,18 +37,20 @@ public class StationsActivity extends ActionBarActivity implements ScrollableSwi
 	private SharedPreferences mPrefs;
     private Timer autoUpdate;
     private boolean isInForegroundMode;
+	private AssetManager assetManager;
 	private static final String TAG = "StationsActivity";
 	private static final String GENERAL_TOPIC_NAME = "alerts";
 	private Date nextUpdate = null;
-	private long UPDATE_FREQUENCY_IN_MS = 10 * 60000;
+	private long UPDATE_FREQUENCY_IN_MS = 0; 	// It will be configured at onCreate
 	private String KEY_UPDATE_FREQUENCY_MILLIS = "UPDATE_FREQUENCY";
     
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+		assetManager = this.getResources().getAssets();
+		UPDATE_FREQUENCY_IN_MS = new Long(AirStationsUtil.getConfigProperty(assetManager, "cache.refresh.interval.ms")).longValue();
 
-		if (nextUpdate == null) {
-			nextUpdate = new Date(1); // past
-		}
+		if (nextUpdate == null) nextUpdate = new Date(1); // past
+
 		// Obtain the FirebaseAnalytics instance.
 		mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         setContentView(R.layout.activity_stations);
@@ -179,7 +181,6 @@ public class StationsActivity extends ActionBarActivity implements ScrollableSwi
 		@Override
 		public void run() {
       	  	// Update the content if the date now is after nextUpdate
-			AssetManager assetManager = this.mContext.getResources().getAssets();
 			StationsFileCacher stationsfilecacher = new StationsFileCacher(mContext, needsUpdate);
 			stationsfilecacher.execute(viewStations, AirStationsUtil.getConfigProperty(assetManager, "source.json.url"));
 			swipeContainer.setRefreshing(false);

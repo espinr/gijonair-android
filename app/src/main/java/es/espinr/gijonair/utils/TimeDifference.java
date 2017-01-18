@@ -13,6 +13,7 @@ import android.content.Context;
 public class TimeDifference {
 	
 	private Context context;
+	private static String TAG = "TimeDifference";
 	
 	public TimeDifference(Context context) {
 		this.context = context;
