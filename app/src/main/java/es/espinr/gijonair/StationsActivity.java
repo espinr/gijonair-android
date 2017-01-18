@@ -8,6 +8,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
@@ -177,8 +179,9 @@ public class StationsActivity extends ActionBarActivity implements ScrollableSwi
 		@Override
 		public void run() {
       	  	// Update the content if the date now is after nextUpdate
+			AssetManager assetManager = this.mContext.getResources().getAssets();
 			StationsFileCacher stationsfilecacher = new StationsFileCacher(mContext, needsUpdate);
-			stationsfilecacher.execute(viewStations, mContext.getString(R.string.url_stations_json));
+			stationsfilecacher.execute(viewStations, AirStationsUtil.getConfigProperty(assetManager, "source.json.url"));
 			swipeContainer.setRefreshing(false);
 		}
 	}

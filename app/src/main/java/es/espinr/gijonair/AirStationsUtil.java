@@ -4,18 +4,16 @@
 package es.espinr.gijonair;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.InetAddress;
+import java.util.Properties;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.res.AssetManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
@@ -131,14 +129,30 @@ public class AirStationsUtil {
 						final View layout = factory.inflate(R.layout.activity_stations, root);
 						LinearLayout viewStations = (LinearLayout) layout.findViewById(R.id.viewStations);
 
-						// Caches the file (asynchronously) when clicks retry
-						StationsFileCacher stationsfilecacher = new StationsFileCacher(c,true);
-				        stationsfilecacher.execute(viewStations, c.getString(R.string.url_stations_json));
-				        // When the task returns it will load the latest values	
+						// Update the content if the date now is after nextUpdate
+						AssetManager assetManager = c.getResources().getAssets();
+						StationsFileCacher stationsfilecacher = new StationsFileCacher(c, true);
+						stationsfilecacher.execute(viewStations, AirStationsUtil.getConfigProperty(assetManager, "source.json.url"));
+						// When the task returns it will load the latest values
 					}
 				});
 		return alertDialog;
 		// alertDialog.setIcon(R.drawable.icon);
+	}
+
+
+	public static String getConfigProperty(AssetManager assetManager, String key) {
+		String value = null;
+		try {
+			InputStream inputStream = assetManager.open("config.properties");
+			Properties properties = new Properties();
+			properties.load(inputStream);
+			Log.d(TAG, "Configuration Properties loaded");
+			value = properties.getProperty(key);
+		} catch (IOException e) {
+			Log.e(TAG, "Failed to load configuration properties");
+		}
+		return value;
 	}
 
 }
