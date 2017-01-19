@@ -1,19 +1,13 @@
 package es.espinr.gijonair;
 
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -25,7 +19,8 @@ import android.widget.ScrollView;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import es.espinr.gijonair.ScrollableSwipeRefreshLayout.OnChildScrollUpListener;
+import java.util.Date;
+import java.util.Timer;
 
 import static java.lang.Long.parseLong;
 
@@ -35,6 +30,8 @@ import static java.lang.Long.parseLong;
  */
 public class StationsActivity extends AppCompatActivity implements ScrollableSwipeRefreshLayout.OnRefreshListener {
 
+	private static final String TAG = "StationsActivity";
+	private static final String GENERAL_TOPIC_NAME = "alerts";
 	private FirebaseAnalytics mFirebaseAnalytics;
     private LinearLayout viewStations;
     private ScrollableSwipeRefreshLayout swipeContainer;
@@ -42,8 +39,6 @@ public class StationsActivity extends AppCompatActivity implements ScrollableSwi
     private Timer autoUpdate;
     private boolean isInForegroundMode;
 	private AssetManager assetManager;
-	private static final String TAG = "StationsActivity";
-	private static final String GENERAL_TOPIC_NAME = "alerts";
 	private Date nextUpdate = null;
 	private long UPDATE_FREQUENCY_IN_MS = 0; 	// It will be configured at onCreate
     
@@ -155,25 +150,18 @@ public class StationsActivity extends AppCompatActivity implements ScrollableSwi
 	private void preferencesSetup() {
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 		boolean notificationsOn = sharedPref.getBoolean(SettingsActivity.KEY_NOTIFICATIONS_ENABLED, false);
-		String notificationsOnRingtone = sharedPref.getString(SettingsActivity.KEY_NOTIFICATIONS_RINGTONE, "");
-		boolean notificationsOnVibrate = sharedPref.getBoolean(SettingsActivity.KEY_NOTIFICATIONS_VIBRATE, false);
 		Long syncFrequency = parseLong(sharedPref.getString(SettingsActivity.KEY_SYNC_FREQUENCY, ""));
-
-		Log.d(TAG, "Frequency?              : " + syncFrequency);
-		Log.d(TAG, "Notifications On?       : " + notificationsOn);
 
 		if (notificationsOn) {
 			FirebaseMessaging.getInstance().subscribeToTopic(GENERAL_TOPIC_NAME);
 			Log.d(TAG, "Subscribed to notifications: " + GENERAL_TOPIC_NAME);
-			Log.d(TAG, "Notifications Ringtone? : " + notificationsOnRingtone);
-			Log.d(TAG, "Notifications Vibrate? 	: " + notificationsOnVibrate);
 		} else {
 			FirebaseMessaging.getInstance().unsubscribeFromTopic(GENERAL_TOPIC_NAME);
 			Log.d(TAG, "Unsubscribed to notifications: " + GENERAL_TOPIC_NAME);
 		}
 
 		// Setup a large number in case it won't be synchronized
-		UPDATE_FREQUENCY_IN_MS =  (syncFrequency.longValue() <= 0)? 36000000 : syncFrequency.longValue();
+		UPDATE_FREQUENCY_IN_MS = (syncFrequency.longValue() <= 0) ? 360000000 : syncFrequency.longValue();
 	}
 
 

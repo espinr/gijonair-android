@@ -8,6 +8,10 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,18 +22,14 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import es.espinr.gijonair.utils.TimeDifference;
 
 public class AirStationsLoader {
 
+	private static final String TAG = "AirStationsLoader";
 	private AirStation airStationsArray[];
 	private Context mContext;
 	private LinearLayout stationsContainer;
-	private static final String TAG = "AirStationsLoader";
 
 	public AirStationsLoader(Context context, LinearLayout linearlayout) {
 		mContext = context;
@@ -91,7 +91,8 @@ public class AirStationsLoader {
 					values[j] = jsonValues.getString(j);
 				}
 			}
-			
+
+			//stations[i] = new AirStation(Html.fromHtml(airStationLabel,Html.FROM_HTML_MODE_LEGACY).toString(), airStationDateTime, indicators, values, icas);
 			stations[i] = new AirStation(airStationLabel.replace("&#225;","á"), airStationDateTime, indicators, values, icas);
 			
 		}
@@ -124,7 +125,7 @@ public class AirStationsLoader {
 			
 			linearlayout.addView(titleStation);
 			LinearLayout linearlayout1 = new LinearLayout(mContext);
-			linearlayout1.setOrientation(1);
+			linearlayout1.setOrientation(LinearLayout.VERTICAL);
 			linearlayout1
 					.setLayoutParams(new android.widget.LinearLayout.LayoutParams(
 							-1, -1, 1.0F));
@@ -152,6 +153,9 @@ public class AirStationsLoader {
 				updatedText.setPadding(20, 0, 0, 0);
 				updatedText.setSingleLine();
 				linearlayout.addView(updatedText);
+
+				Log.d(TAG, "Local datetime is [" + now + "]" + " and the station has [" + airstation.getTime() + "], so :" + timeDiff.getDifferencesTextual(diffs));
+
 			} catch (ParseException e) {
 				Log.e(TAG, "Error when parsing the date " + airstation.getTime());
 			}
