@@ -67,9 +67,9 @@ public class AirStationsLoader {
        	stations = new AirStation[jsonArray.length()];
        	
        	for (int i = 0; i < stations.length; i++) {
-       		
-       		// Gathers information about the station 
-       		JSONObject jsonStation = (JSONObject) jsonArray.get(i);
+
+			// Gathers information about each station
+			JSONObject jsonStation = (JSONObject) jsonArray.get(i);
        		   		
 			String airStationLabel = jsonStation.getString(this.mContext.getString(R.string.json_label_name));
 			String airStationDateTime = jsonStation.getString(this.mContext.getString(R.string.json_label_time));
@@ -93,7 +93,7 @@ public class AirStationsLoader {
 			}
 
 			//stations[i] = new AirStation(Html.fromHtml(airStationLabel,Html.FROM_HTML_MODE_LEGACY).toString(), airStationDateTime, indicators, values, icas);
-			stations[i] = new AirStation(airStationLabel.replace("&#225;","á"), airStationDateTime, indicators, values, icas);
+			stations[i] = new AirStation(airStationLabel, airStationDateTime, indicators, values, icas);
 			
 		}
         } catch (IOException ioexception) {
@@ -153,7 +153,6 @@ public class AirStationsLoader {
 				updatedText.setPadding(20, 0, 0, 0);
 				updatedText.setSingleLine();
 				linearlayout.addView(updatedText);
-
 				Log.d(TAG, "Local datetime is [" + now + "]" + " and the station has [" + airstation.getTime() + "], so :" + timeDiff.getDifferencesTextual(diffs));
 
 			} catch (ParseException e) {
