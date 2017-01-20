@@ -3,11 +3,6 @@
  */
 package es.espinr.gijonair;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -22,6 +17,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 /**
  * @author martin
  * 
@@ -31,6 +31,7 @@ import android.widget.LinearLayout;
 public class AirStationsUtil {
 
 	private static final String TAG = "AirStationsUtil";
+	private static final String FILENAME_PROPERTIES = "config.properties";
 
 	/**
 	 * @return true if Internet connection is available, false if not.
@@ -144,10 +145,9 @@ public class AirStationsUtil {
 	public static String getConfigProperty(AssetManager assetManager, String key) {
 		String value = null;
 		try {
-			InputStream inputStream = assetManager.open("config.properties");
+			InputStream inputStream = assetManager.open(FILENAME_PROPERTIES);
 			Properties properties = new Properties();
 			properties.load(inputStream);
-			Log.d(TAG, "Configuration Properties loaded");
 			value = properties.getProperty(key);
 		} catch (IOException e) {
 			Log.e(TAG, "Failed to load configuration properties");

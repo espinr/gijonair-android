@@ -51,7 +51,7 @@ Los autores de los iconos de la aplicación son:\n
     <string name="title_activity_about">Acerca de…</string>
     <string name="title_section_leyend">Los Datos</string>
     <string name="title_section_about">La Aplicación</string>
-    <string name="action_settings">Ajustes</string>
+    <string name="action_settings">Preferencias</string>
     <string name="unit_measure">µg/m3</string>
     <string name="no_available">No Disponible</string>
 

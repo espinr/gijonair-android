@@ -1,6 +1,7 @@
 package es.espinr.gijonair;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.Gravity;
@@ -30,10 +31,12 @@ public class AirStationsLoader {
 	private AirStation airStationsArray[];
 	private Context mContext;
 	private LinearLayout stationsContainer;
+	private AssetManager assetManager;
 
 	public AirStationsLoader(Context context, LinearLayout linearlayout) {
 		mContext = context;
 		stationsContainer = linearlayout;
+		assetManager = mContext.getResources().getAssets();
 	}
 
 	private void clearView() {
@@ -70,14 +73,15 @@ public class AirStationsLoader {
 
 			// Gathers information about each station
 			JSONObject jsonStation = (JSONObject) jsonArray.get(i);
-       		   		
-			String airStationLabel = jsonStation.getString(this.mContext.getString(R.string.json_label_name));
-			String airStationDateTime = jsonStation.getString(this.mContext.getString(R.string.json_label_time));
+
+			String airStationLabel = jsonStation.getString(AirStationsUtil.getConfigProperty(assetManager, "source.json.label.name"));
+
+			String airStationDateTime = jsonStation.getString(AirStationsUtil.getConfigProperty(assetManager, "source.json.label.time"));
 			
 			// The indicators, icas, and values
-			JSONArray jsonIndicators = jsonStation.getJSONArray(this.mContext.getString(R.string.json_label_indicator));
-			JSONArray jsonIcas = jsonStation.getJSONArray(this.mContext.getString(R.string.json_label_ica));
-			JSONArray jsonValues = jsonStation.getJSONArray(this.mContext.getString(R.string.json_label_value));
+			JSONArray jsonIndicators = jsonStation.getJSONArray(AirStationsUtil.getConfigProperty(assetManager, "source.json.label.indicator"));
+			JSONArray jsonIcas = jsonStation.getJSONArray(AirStationsUtil.getConfigProperty(assetManager, "source.json.label.ica"));
+			JSONArray jsonValues = jsonStation.getJSONArray(AirStationsUtil.getConfigProperty(assetManager, "source.json.label.value"));
 			
 			// Limits to the length of the icas
 			String[] indicators = new String[jsonIcas.length()];

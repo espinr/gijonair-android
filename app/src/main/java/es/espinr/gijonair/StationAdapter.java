@@ -1,6 +1,7 @@
 package es.espinr.gijonair;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,10 +18,12 @@ public class StationAdapter extends BaseAdapter {
 
 	private AirStation airStation;
 	private Context mContext;
+	private AssetManager assetManager;
 
 	public StationAdapter(Context context, AirStation airstation) {
 		mContext = context;
 		airStation = airstation;
+		assetManager = context.getResources().getAssets();
 	}
 
 	public int getCount() {
@@ -36,16 +39,13 @@ public class StationAdapter extends BaseAdapter {
 	}
 
 	public int getResourceFromIca(String s) {
-		if (s.equals(mContext.getString(R.string.text_verygood))) {
+		if (s.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.value.ica.verygood"))) {
 			return R.drawable.muybuena;
-		} else
-		if (s.equals(mContext.getString(R.string.text_good))) {
+		} else if (s.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.value.ica.good"))) {
 			return R.drawable.buena;
-		} else
-		if (s.equals(mContext.getString(R.string.text_poor))) {
+		} else if (s.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.value.ica.poor"))) {
 			return R.drawable.mala;
-		} else
-		if (s.equals(mContext.getString(R.string.text_verypoor))) { 
+		} else if (s.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.value.ica.verypoor"))) {
 			return R.drawable.muymala;
 		}
 		return R.drawable.nd;
@@ -55,50 +55,50 @@ public class StationAdapter extends BaseAdapter {
 	 * Returns the label corresponding to the indicator provided as argument.
 	 */
 	private String getLabelIndicator(String indicatorSymbol) {
-		if (indicatorSymbol.equals("pm10")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.pm10"))) {
 			return this.mContext.getString(R.string.indicator_symbol_pm10);
 		}
-		if (indicatorSymbol.equals("ben")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.ben"))) {
 			return this.mContext.getString(R.string.indicator_symbol_ben);
 		}
-		if (indicatorSymbol.equals("pm25")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.pm25"))) {
 			return this.mContext.getString(R.string.indicator_symbol_pm25);
 		}
-		if (indicatorSymbol.equals("so2")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.so2"))) {
 			return this.mContext.getString(R.string.indicator_symbol_so2);
 		}
-		if (indicatorSymbol.equals("co")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.co"))) {
 			return this.mContext.getString(R.string.indicator_symbol_co);
 		}
-		if (indicatorSymbol.equals("no")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.no"))) {
 			return this.mContext.getString(R.string.indicator_symbol_no);
 		}
-		if (indicatorSymbol.equals("o3")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.o3"))) {
 			return this.mContext.getString(R.string.indicator_symbol_o3);
 		}
 		return indicatorSymbol;
 	}
 
 	private String getDescriptionIndicator(String indicatorSymbol) {
-		if (indicatorSymbol.equals("pm10")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.pm10"))) {
 			return this.mContext.getString(R.string.indicator_text_pm10);
 		}
-		if (indicatorSymbol.equals("ben")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.ben"))) {
 			return this.mContext.getString(R.string.indicator_text_ben);
 		}
-		if (indicatorSymbol.equals("pm25")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.pm25"))) {
 			return this.mContext.getString(R.string.indicator_text_pm25);
 		}
-		if (indicatorSymbol.equals("so2")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.so2"))) {
 			return this.mContext.getString(R.string.indicator_text_so2);
 		}
-		if (indicatorSymbol.equals("co")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.co"))) {
 			return this.mContext.getString(R.string.indicator_text_co);
 		}
-		if (indicatorSymbol.equals("no")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.no"))) {
 			return this.mContext.getString(R.string.indicator_text_no);
 		}
-		if (indicatorSymbol.equals("o3")) {
+		if (indicatorSymbol.equals(AirStationsUtil.getConfigProperty(assetManager, "source.json.indicator.o3"))) {
 			return this.mContext.getString(R.string.indicator_text_o3);
 		}
 		return indicatorSymbol;

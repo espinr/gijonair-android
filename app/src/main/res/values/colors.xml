@@ -8,5 +8,6 @@
     <color name="title_back">#ff000000</color>
     <color name="title_front">#ffffffff</color>
     <color name="station_indicator_front">#ffe1f5c4</color>
-    <color name="notification">#ffe1f5c4</color>
+    <color name="notification">#ffb81935</color>
+    <color name="red_gijon">#ffb81935</color>
 </resources>

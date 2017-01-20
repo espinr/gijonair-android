@@ -162,7 +162,7 @@ public class AboutActivity extends AppCompatActivity implements
 
 				TextView leyendText = new TextView(mContext);
 				leyendText.setText(mContext.getString(R.string.leyend));
-				Linkify.addLinks(leyendText, 15);
+				Linkify.addLinks(leyendText, Linkify.ALL);
 				leyendText.setLinksClickable(true);
 				scrollView.addView(leyendText);
 				relativeLayout.addView(scrollView);
@@ -188,7 +188,7 @@ public class AboutActivity extends AppCompatActivity implements
 						LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
 				LinearLayout linearlayout = new LinearLayout(mContext);
-				linearlayout.setOrientation(1);
+					linearlayout.setOrientation(LinearLayout.VERTICAL);
 				linearlayout
 						.setLayoutParams(new android.widget.AbsListView.LayoutParams(
 								LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -202,7 +202,7 @@ public class AboutActivity extends AppCompatActivity implements
 				textview.setGravity(Gravity.CENTER);
 				linearlayout.addView(textview);
 				TextView textview1 = new TextView(mContext);
-				textview1.setText(mContext.getString(R.string.app_version));
+					textview1.setText(new StringBuilder().append(mContext.getString(R.string.app_version)).append(" ").append(BuildConfig.VERSION_NAME).toString());
 				textview1.setTextSize(TypedValue.COMPLEX_UNIT_MM, 2F);
 				Linkify.addLinks(textview1, Linkify.ALL);
 				// textview1.setTextAppearance(context, 0x7f0b008b);
