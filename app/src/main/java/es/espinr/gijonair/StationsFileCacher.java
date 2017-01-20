@@ -1,7 +1,14 @@
 package es.espinr.gijonair;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,15 +16,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
-
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.AsyncTask;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 
 /**
@@ -27,19 +25,28 @@ import android.widget.Toast;
 
 public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 
+	private static final String TAG = "StationsFileCacher";
 	public static String LOCAL_FILENAME = "stations.json";
 	public static String LOCAL_BACKUP_FILENAME = "stations_back.json";
-	private static final String TAG = "StationsFileCacher";
 	private Context mContext;
 	private View view;
 	private ProgressDialog dialog;
 	private boolean needsUpdate;
 
 	/**
-	 * Read all the content from the reader. 
-	 * 
+	 * @param context    The context to be stored.
+	 */
+	public StationsFileCacher(Context context, boolean needsUpdate) {
+		this.mContext = context;
+		this.dialog = new ProgressDialog(context);
+		this.needsUpdate = needsUpdate;
+	}
+
+	/**
+	 * Read all the content from the reader.
+	 *
 	 * @param reader
-	 * @return	The content read. 
+	 * @return The content read.
 	 * @throws IOException
 	 */
 	private String readAll(Reader reader) throws IOException {
@@ -52,17 +59,6 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 			stringbuilder.append((char) i);
 		} while (true);
 	}
-	
-	
-	/**
-	 * @param context	The context to be stored.
-	 */
-	public StationsFileCacher(Context context, boolean needsUpdate) {
-		this.mContext = context;
-		this.dialog = new ProgressDialog(context);
-		this.needsUpdate = needsUpdate;
-	}
-	
 	
 	/* (non-Javadoc)
 	 * @see android.os.AsyncTask#onPreExecute()
@@ -154,7 +150,6 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 			// Loads the just added content
 			AirStationsLoader stationLoader = new AirStationsLoader(mContext, linearlayout);
 			int i = stationLoader.execute();
-			
 			Log.d(TAG, "Loaded "+ i +" stations ");
 			
 			// close the dialog and shows the number of stations loaded
