@@ -30,15 +30,15 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 	public static String LOCAL_BACKUP_FILENAME = "stations_back.json";
 	private Context mContext;
 	private View view;
-	private ProgressDialog dialog;
+	private ScrollableSwipeRefreshLayout swipeRefreshLayout;
 	private boolean needsUpdate;
 
 	/**
 	 * @param context    The context to be stored.
 	 */
-	public StationsFileCacher(Context context, boolean needsUpdate) {
+	public StationsFileCacher(Context context, boolean needsUpdate, ScrollableSwipeRefreshLayout swipeRefreshLayout) {
 		this.mContext = context;
-		this.dialog = new ProgressDialog(context);
+		this.swipeRefreshLayout = swipeRefreshLayout;
 		this.needsUpdate = needsUpdate;
 	}
 
@@ -66,9 +66,7 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
-		dialog = AirStationsUtil.createProgressDialogLoading(mContext);
-		dialog.show();
-		//AirStationsUtil.clearFileCache(LOCAL_FILENAME);
+		swipeRefreshLayout.setRefreshing(true);
 	}
 
 
@@ -86,7 +84,6 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 
 		if (needsUpdate) {
 			try {
-
 				InputStream inputstream;
 				URL url = new URL((String)params[1]);
 
@@ -95,23 +92,18 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 				Log.d(TAG, (new StringBuilder("Reading file at ")).append(url.toString()).append(": ").append(s).toString());
 				inputstream.close();
 				if (s.trim().length()==0){
-					revertDBFileFromBackup();
-					return s;
+					Log.e(TAG, "I couldn't read the feed properly so the data will remain the same");
+				} else {
+					backupDBFile();
+					// Caches the file as stations.json
+					FileOutputStream fileoutputstream = mContext.openFileOutput(LOCAL_FILENAME, 0);
+					fileoutputstream.write(s.getBytes());
+					fileoutputstream.close();
+					Log.d(TAG, "Local file " + LOCAL_FILENAME + " written");
 				}
 			} catch (IOException e) {
-				Log.e(TAG, (new StringBuilder("ERROR when reading feed ")).append(params[1]).append(":\n").append(e.getMessage()).toString());
-				return null;
-			}
-			try {
-				backupDBFile();
-				// Caches the file as stations.json
-				FileOutputStream fileoutputstream = mContext.openFileOutput(LOCAL_FILENAME, 0);
-				fileoutputstream.write(s.getBytes());
-				fileoutputstream.close();
-				Log.d(TAG, "Local file " + LOCAL_FILENAME + " written");
-			} catch (IOException e) {
-				Log.e(TAG, (new StringBuilder("ERROR writing file")).append(LOCAL_FILENAME).append(":\n").append(e.getMessage()).toString());
-				revertDBFileFromBackup();
+				e.printStackTrace();
+				Log.e(TAG, (new StringBuilder("ERROR when reading or writing the file ")).append(params[1]).append(":\n").append(e.getMessage()).toString());
 			}
 		}
 		return s;
@@ -125,25 +117,12 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 		}
 	}
 
-	protected void revertDBFileFromBackup() {
-		try {
-			AirStationsUtil.backupFile(mContext.getFileStreamPath(LOCAL_BACKUP_FILENAME), mContext.getFileStreamPath(LOCAL_FILENAME));
-		} catch (IOException e) {
-			Log.e(TAG, "Error reverting a copy of the DB.");
-		}
-	}
-
 
 	protected void onPostExecute(String s) {
 
 		try {
+			if (s==null) return;
 
-			if (s==null) {
-				this.dialog.dismiss();
-	            AirStationsUtil.createAlertDialogNoDataLoaded(this.mContext).show();
-				return;
-			}
-			
 			LinearLayout linearlayout = (LinearLayout) view
 					.findViewById(R.id.viewStations);
 
@@ -152,11 +131,6 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 			int i = stationLoader.execute();
 			Log.d(TAG, "Loaded "+ i +" stations ");
 			
-			// close the dialog and shows the number of stations loaded
-			if (dialog.isShowing()) {
-				//dialog.setMessage(String.valueOf(i) + " " + mContext.getString(R.string.text_stations_loaded));
-				dialog.dismiss();
-			}
 			Toast.makeText(
 					mContext,
 					(new StringBuilder(String.valueOf(i))).append(" ")
@@ -166,8 +140,8 @@ public class StationsFileCacher extends AsyncTask<Object,Object,String> {
 			Log.e(TAG, (new StringBuilder("ERROR writing file"))
 					.append(LOCAL_FILENAME).append("\n").append(exception.getMessage())
 					.toString());
-			this.dialog.dismiss();
 		}
+		swipeRefreshLayout.setRefreshing(false);
 		return;
 	}
 

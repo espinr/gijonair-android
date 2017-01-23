@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -35,6 +36,7 @@ public class StationsActivity extends AppCompatActivity implements ScrollableSwi
 	private FirebaseAnalytics mFirebaseAnalytics;
     private LinearLayout viewStations;
     private ScrollableSwipeRefreshLayout swipeContainer;
+	private AirStationsLoader dataLoader;
 	private SharedPreferences mPrefs;
     private Timer autoUpdate;
     private boolean isInForegroundMode;
@@ -44,26 +46,23 @@ public class StationsActivity extends AppCompatActivity implements ScrollableSwi
     
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
+		// Policy of threads
+		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
+
 		assetManager = this.getResources().getAssets();
-		nextUpdate = new Date(new Date().getTime() - 10000);
+
+		nextUpdate = new Date(new Date().getTime() - 10000);   // Should update now
 
 		// Obtain the FirebaseAnalytics instance.
 		mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         setContentView(R.layout.activity_stations);
         viewStations = (LinearLayout) findViewById(R.id.viewStations);
-        
-        // Setup the swipeContainer
+		dataLoader = new AirStationsLoader(this, viewStations);
+		dataLoader.execute();
+
+		// Setup the swipeContainer
         swipeContainer = (ScrollableSwipeRefreshLayout) findViewById(R.id.swipeContainer);
         swipeContainer.setOnRefreshListener(this);
-
-        // Stops the execution until the Internet connection is available 
-        if (!AirStationsUtil.isInternetAvailable(this)) {
-        	Log.d(StationsActivity.TAG, "No internet available");
-        	AlertDialog alert = AirStationsUtil.createAlertDialogNoDataLoaded(this);
-        	alert.show();
-        	return;
-        }
-
 		preferencesSetup();
 
 		// Just then the Y value of the scroll is 0, refresh swipe can be performed
@@ -76,6 +75,7 @@ public class StationsActivity extends AppCompatActivity implements ScrollableSwi
 						swipeContainer.setActivated(isFirstStationShown);
 					}
 				});
+		updateStations();
     }
 
 	@Override
@@ -96,12 +96,13 @@ public class StationsActivity extends AppCompatActivity implements ScrollableSwi
     	super.onResume();
     	// In case the app is visible
     	isInForegroundMode = true;
-		updateStations();
+		dataLoader.execute();
 	}
 
 	@Override
 	public void onRefresh() {
 		updateStations();
+		// Loads the latest cached stations cached
 	}
 
 	@Override
@@ -139,7 +140,7 @@ public class StationsActivity extends AppCompatActivity implements ScrollableSwi
 			return true;
 		} else if (id == R.id.action_about) {
 			super.onOptionsItemSelected(item);
-			Log.d(TAG, "Starting aboutactivity");
+			Log.d(TAG, "Starting about activity");
 			this.startActivity(aboutIntent);
 			return true;
 		}
@@ -168,7 +169,7 @@ public class StationsActivity extends AppCompatActivity implements ScrollableSwi
 	private void updateStations(){
 		boolean needsUpdate = new Date().after(nextUpdate);
 		if (needsUpdate)
-			nextUpdate = new Date(new Date().getTime() + UPDATE_FREQUENCY_IN_MS);
+			this.nextUpdate = new Date(new Date().getTime() + UPDATE_FREQUENCY_IN_MS);
 		RefreshThread refreshThread = new RefreshThread(this, needsUpdate);
 		new Handler().post(refreshThread);
 	}
@@ -188,9 +189,15 @@ public class StationsActivity extends AppCompatActivity implements ScrollableSwi
 		@Override
 		public void run() {
       	  	// Update the content if the date now is after nextUpdate
-			StationsFileCacher stationsfilecacher = new StationsFileCacher(mContext, needsUpdate);
-			stationsfilecacher.execute(viewStations, AirStationsUtil.getConfigProperty(assetManager, "source.json.url"));
-			swipeContainer.setRefreshing(false);
+			if (!AirStationsUtil.isInternetAvailable()) {
+				Log.d(StationsActivity.TAG, "No internet available");
+				AlertDialog alert = AirStationsUtil.createAlertDialogNoDataLoaded(mContext);
+				alert.show();
+				swipeContainer.setRefreshing(false);
+			} else {
+				StationsFileCacher stationsfilecacher = new StationsFileCacher(mContext, needsUpdate, swipeContainer);
+				stationsfilecacher.execute(viewStations, AirStationsUtil.getConfigProperty(assetManager, "source.json.url"));
+			}
 		}
 	}
     

@@ -1,5 +1,5 @@
 # Built application files
-**/build/
+build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -24,6 +24,9 @@ local.properties
 .idea/vcs.xml
 .idea/runConfigurations.xml
 *.iml
+
+# Latest Generated APK
+*.apk
 
 # OS-specific files
 .DS_Store

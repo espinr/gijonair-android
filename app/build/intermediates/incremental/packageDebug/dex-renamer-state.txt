@@ -1,4 +1,4 @@
-#Wed Jan 18 17:26:22 CET 2017
+#Mon Jan 23 15:23:42 CET 2017
 base.0=/Users/martin/git/gijonair-android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c3fd1685c66c24cd0481dd93e87cdac7a97ba085
 renamed.1=classes2.dex
 renamed.0=classes.dex

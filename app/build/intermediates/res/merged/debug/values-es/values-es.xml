@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="pref_sync_frequency_titles">
+        <item>10 minutos</item>
+        <item>15 minutos</item>
+        <item>30 minutos</item>
+        <item>1 hora</item>
+        <item>Nunca</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>600000</item>
+        <item>900000</item>
+        <item>1800000</item>
+        <item>3600000</item>
+        <item>360000000</item>
+    </string-array>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Ir a la pantalla de inicio"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
     <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s, %2$s, %3$s"</string>
@@ -19,7 +33,93 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Compartir con"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Compartir con %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Contraer"</string>
+    <string name="about_the_app_text">GijonAir</string>
+    <string name="action_about">Acerca de…</string>
+    <string name="action_settings">Preferencias</string>
+    <string name="app_name">GijonAir</string>
+    <string name="app_version">Versión</string>
     <string msgid="2518680582564677258" name="common_google_play_services_unknown_issue">"La aplicación <ns1:g id="APP_NAME">%1$s</ns1:g> tiene problemas con los Servicios de Google Play. Vuelve a intentarlo."</string>
+    <string name="date_day">un día</string>
+    <string name="date_days">días</string>
+    <string name="date_hour">una hora</string>
+    <string name="date_hours">horas</string>
+    <string name="date_minute">un minuto</string>
+    <string name="date_minutes">minutos</string>
+    <string name="date_since">hace</string>
+    <string name="date_yesterday">ayer</string>
+    <string name="description">EL AIRE QUE RESPIRAS EN GIJÓN</string>
+    <string name="dialog_no_internet_button_cancel">Cancelar</string>
+    <string name="dialog_no_internet_button_ok">OK</string>
+    <string name="dialog_no_internet_button_retry">Reintentar</string>
+    <string name="dialog_no_internet_description">Upps… No se han podido cargar todos los datos.\nComprueba que tienes conexión a internet e inténtalo de nuevo.</string>
+    <string name="dialog_no_internet_title">Actualizando las estaciones</string>
+    <string name="indicator_symbol_ben">Ben</string>
+    <string name="indicator_symbol_co">CO</string>
+    <string name="indicator_symbol_no">NOx</string>
+    <string name="indicator_symbol_o3">O3</string>
+    <string name="indicator_symbol_pm10">PM10</string>
+    <string name="indicator_symbol_pm25">PM2.5</string>
+    <string name="indicator_symbol_so2">SO2</string>
+    <string name="indicator_text_ben">C6H6 (Benceno)</string>
+    <string name="indicator_text_co">CO (Monóxido de carbono)</string>
+    <string name="indicator_text_no">NO (Óxidos de nitrógeno)</string>
+    <string name="indicator_text_o3">O3 (Ozono)</string>
+    <string name="indicator_text_pm10">PM10µm</string>
+    <string name="indicator_text_pm25">PM2,5µm</string>
+    <string name="indicator_text_so2">SO2 (Dióxido de azufre)</string>
+    <string name="issues">Envía tus sugerencias o comentarios para mejorar la aplicación desde\n
+        https://github.com/espinr/GijonAir/issues</string>
+    <string name="leyend">Esta aplicación muestra información sobre la calidad del aire en la ciudad de Gijón
+        a través de la Red de Medida de la Calidad del Aire de Gijón y publicada como parte de su iniciativa de Open Data.\n
+        Estaciones automáticas recogen periódicamente los datos de diversos contaminantes
+        atmosféricos en medias quinceminutales y los ofrecen públicamente a través del sitio Web
+        (http://www.gijon.eu/documentos/departamentos/ma/estaciones/index.html) y como Open Data (http://opendata.gijon.es/descargar.php?id=1&amp;tipo=JSON)\n\n
+        Los valores están pendientes de validación y son mostrados en el sitio con una actualización horaria.\n
+ - PM10: Partículas en suspensión menores de 10 µm\n
+ - PM2.5: Partículas en suspensión menores de 2,5 µm\n
+ - SO2: Dióxido de azufre\n
+ - NOx: Oxidos de nitrógeno\n
+ - CO: Monóxido de carbono\n
+ - O3: Ozono\n
+ - Pb: Plomo\n
+ - COV: Compuestos orgánicos volátiles\n
+ - C6H6: Benceno\n
+ - Tolueno\n
+ - Meta-xileno\n\n
+Los indicadores se basan en el índice ICA (Índice Calidad del Aire), que está comprendido entre 0 y >150, de modo que cuanto mayor sea el índice, peor será la calidad del aire.\n\n
+El criterio utilizado para asignar valores de concentración a los valores del índice, son los valores fijados en la legislación.\n\n
+Lee más sobre el cálculo del ICA en (http://www.gijon.eu/documentos/departamentos/ma/estaciones/ica_txt.html)
+    </string>
+    <string name="no_available">No Disponible</string>
+    <string name="pref_header_data_sync">Actualización</string>
+    <string name="pref_header_notifications">Notificaciones</string>
+    <string name="pref_ringtone_silent">Silencio</string>
+    <string name="pref_title_new_message_notifications">Recibir alertas</string>
+    <string name="pref_title_ringtone">Tono</string>
+    <string name="pref_title_settings">Preferencias</string>
+    <string name="pref_title_sync_frequency">Frecuencia de actualización</string>
+    <string name="pref_title_system_sync_settings">Ajustes de actualización</string>
+    <string name="pref_title_vibrate">Vibración</string>
     <string msgid="146198913615257606" name="search_menu_title">"Buscar"</string>
+    <string name="spinner_loading_stations">Obteniendo los últimos datos registrados…</string>
+    <string name="spinner_loading_stations_cancel">Upps… No se han podido cargar todos los datos. Inténtalo en un par de minutos.</string>
+    <string name="spinner_loading_stations_title">Actualizando datos</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"+999"</string>
+    <string name="text_disclaimer">Esta aplicación usa los datos del sitio web del Ayuntamiento de Gijón. Estos pueden contener errores, ya que no han sido validados.\n\n
+Los autores de los iconos de la aplicación son:\n
+- Skull and crossbones: de Brianna Reed (Noun Project)\n
+- Cloud: de Hunotika (Noun Project)\n
+- Refresh: de Karsten Barnett (Noun Project)\n
+ 	    </string>
+    <string name="text_refresh">Actualizar</string>
+    <string name="text_station">Estación</string>
+    <string name="text_stations_loaded">estaciones cargadas con la última configuración</string>
+    <string name="title_activity_about">Acerca de…</string>
+    <string name="title_activity_settings">Preferencias</string>
+    <string name="title_section_about">La Aplicación</string>
+    <string name="title_section_leyend">Los Datos</string>
+    <string name="unit_measure">µg/m3</string>
+    <string name="updated">actualizada</string>
+    <string name="url_source_origin">http://www.gijon.eu/documentos/departamentos/ma/estaciones/index.html</string>
+    <string name="values_of">Valores de</string>
 </resources>

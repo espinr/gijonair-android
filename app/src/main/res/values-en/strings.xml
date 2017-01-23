@@ -17,7 +17,7 @@
     <string name="text_stations_loaded">stations with the latest values</string>
     <!-- Dialog when no connection available -->
     <string name="dialog_no_internet_title">Refreshing stations</string>
-    <string name="dialog_no_internet_description">Oops!… Data couldn\'t be loaded.\nPlease, check you\'re connected to Internet.</string>
+    <string name="dialog_no_internet_description">Oops!… Latest data couldn\'t be loaded.\nPlease, check the internet connection and retry again.</string>
     <string name="dialog_no_internet_button_retry">Retry</string>
     <string name="dialog_no_internet_button_cancel">Cancel</string>
 
@@ -81,4 +81,5 @@
     <string name="pref_ringtone_silent">Silent</string>
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="date_since">" "</string>
+    <string name="dialog_no_internet_button_ok">OK</string>
 </resources>

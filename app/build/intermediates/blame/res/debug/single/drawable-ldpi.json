@@ -12,12 +12,12 @@
         "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/mala.png"
     },
     {
-        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/nd.png",
-        "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/nd.png"
-    },
-    {
         "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/na.png",
         "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/na.png"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/nd.png",
+        "source": "/Users/martin/git/gijonair-android/app/src/main/res/drawable-ldpi/nd.png"
     },
     {
         "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/drawable-ldpi/mapaestaciones.png",

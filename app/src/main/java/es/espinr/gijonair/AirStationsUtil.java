@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.InetAddress;
 import java.util.Properties;
 
 /**
@@ -32,31 +33,19 @@ public class AirStationsUtil {
 
 	private static final String TAG = "AirStationsUtil";
 	private static final String FILENAME_PROPERTIES = "config.properties";
+	private static final String URL_TO_TEST = "gijonair.es";
 
 	/**
 	 * @return true if Internet connection is available, false if not.
 	 */
-	public static boolean isInternetAvailable(Context context) {
-		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-		NetworkInfo wifiNetwork = cm
-				.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-		if (wifiNetwork != null && wifiNetwork.isConnected()) {
-			return true;
+	public static boolean isInternetAvailable() {
+		try {
+			InetAddress ipAddr = InetAddress.getByName(URL_TO_TEST);
+			return !ipAddr.equals("");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
 		}
-
-		NetworkInfo mobileNetwork = cm
-				.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-		if (mobileNetwork != null && mobileNetwork.isConnected()) {
-			return true;
-		}
-
-		NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-		if (activeNetwork != null && activeNetwork.isConnected()) {
-			return true;
-		}
-
-		return false;
 	}
 
 	/**
@@ -116,25 +105,11 @@ public class AirStationsUtil {
 		alertDialog.setMessage(context
 				.getString(R.string.dialog_no_internet_description));
 
-		alertDialog.setButton(AlertDialog.BUTTON_POSITIVE,
-				context.getString(R.string.dialog_no_internet_button_retry),
+		alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+				context.getString(R.string.dialog_no_internet_button_ok),
 				new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-				        // Caches the file (asynchronously)
-						AlertDialog myDialog = (AlertDialog) dialog;
-						Context c = myDialog.getContext();
-						
-						// Firstly gets the layout where the stations are loaded
-						final LayoutInflater factory = myDialog.getLayoutInflater();
-						ViewGroup root = null;
-						final View layout = factory.inflate(R.layout.activity_stations, root);
-						LinearLayout viewStations = (LinearLayout) layout.findViewById(R.id.viewStations);
-
-						// Update the content if the date now is after nextUpdate
-						AssetManager assetManager = c.getResources().getAssets();
-						StationsFileCacher stationsfilecacher = new StationsFileCacher(c, true);
-						stationsfilecacher.execute(viewStations, AirStationsUtil.getConfigProperty(assetManager, "source.json.url"));
-						// When the task returns it will load the latest values
+						dialog.dismiss();
 					}
 				});
 		return alertDialog;
