@@ -4,7 +4,7 @@
     <string name="app_version">Version</string>
     <string name="action_about">About…</string>
     <string name="values_of">Values of</string>
-    <string name="description">AIR YOU BREATH IN GIJÓN</string>
+    <string name="description">AIR I BREATH IN GIJÓN</string>
     <string name="about_the_app_text">GijonAir</string>
     <string name="issues">Send your feedback about this application by:\n\n        https://github.com/espinr/GijonAir/issues</string>
     <string name="leyend">"This application shows information about air quality in the City of Gijón. Data is gathered by the Air Quality Measuring Network of Gijón and published as part of the Open Data initiative.\n\n        Data about several pollution indicators are collected frequently by automatic machines. This information is exposed on the web\n        (http://www.gijon.eu/documentos/departamentos/ma/estaciones/index.html) and as Open Data (http://opendata.gijon.es/descargar.php?id=1&amp;tipo=JSON).\n\n        Please, note that values are updated every hour but they need to be validated by experts, so don't rely too much on the data shown. \n        \n        These are some of the indicators measured. \n\n - PM10: Atmospheric particulate matter with diameter bellow 10 µm\n\n - PM2.5: Atmospheric particulate matter with diameter bellow  2.5 µm\n\n - SO2: Sulphur dioxide\n\n - NOx: Nitrogen oxides\n\n - CO: Carbon monoxide\n\n - O3: Ozone\n\n - Pb: Lead\n\n - COV: Volatile organic compounds\n\n - C6H6: Benzene\n\n - Toluene\n\n - Meta-xylene\n\n\nIndicators are visualized using the ICA (Air Quality Index), regulated by law. This index has a range between 0 and >150, so the larger the value, the worst the quality of the air.\n\nRead more about how calculate ICA reference: (http://www.gijon.eu/documentos/departamentos/ma/estaciones/ica_txt.html)\n    "</string>
@@ -47,10 +47,10 @@
 
     <!-- Date operations -->
     <string name="updated">updated</string>
-    <string name="date_day">a day ago</string>
+    <string name="date_day">one day ago</string>
     <string name="date_days">days ago</string>
     <string name="date_yesterday">yesterday</string>
-    <string name="date_hour">an hour</string>
+    <string name="date_hour">an hour ago</string>
     <string name="date_hours">hours ago</string>
     <string name="date_minute">a minute ago</string>
     <string name="date_minutes">minutes ago</string>
