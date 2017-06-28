@@ -151,7 +151,7 @@ public class StationsActivity extends AppCompatActivity implements ScrollableSwi
 	private void preferencesSetup() {
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 		boolean notificationsOn = sharedPref.getBoolean(SettingsActivity.KEY_NOTIFICATIONS_ENABLED, false);
-		Long syncFrequency = parseLong(sharedPref.getString(SettingsActivity.KEY_SYNC_FREQUENCY, ""));
+		Long syncFrequency = parseLong(sharedPref.getString(SettingsActivity.KEY_SYNC_FREQUENCY, "600000"));
 
 		if (notificationsOn) {
 			FirebaseMessaging.getInstance().subscribeToTopic(GENERAL_TOPIC_NAME);
