@@ -5,40 +5,29 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.3"
-    timestamp="15170459527838"
-    token="-449427872446190253"
-    verifier="COMPATIBLE" >
+    timestamp="74416001462152"
+    token="-449427872446190253" >
 
     <task
         name="javac"
-        duration="429" />
+        duration="0" />
     <task
         name="instant-run-dex"
-        duration="774" />
+        duration="0" />
     <task
         name="instant-run-transform"
-        duration="39" />
+        duration="0" />
     <task
         name="verifier"
-        duration="6" />
-
-    <artifact
-        location="/Users/martin/git/gijonair-android/app/build/intermediates/reload-dex/debug/classes.dex"
-        type="RELOAD_DEX" />
+        duration="0" />
 
     <build
-        timestamp="15036844662150"
+        timestamp="74056998749679"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/martin/git/gijonair-android/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
-    <build
-        timestamp="15170459527838"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="/Users/martin/git/gijonair-android/app/build/intermediates/reload-dex/debug/classes.dex"
-            type="RELOAD_DEX" />
-    </build>
+    <build timestamp="74416001462152" />
 
 </instant-run>

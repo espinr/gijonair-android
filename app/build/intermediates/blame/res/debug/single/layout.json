@@ -8,12 +8,12 @@
         "source": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/select_dialog_item_material.xml"
     },
     {
-        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
-        "source": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_activity_chooser_view_list_item.xml"
-    },
-    {
         "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
         "source": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
+        "source": "/Users/martin/git/gijonair-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/res/layout/abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "/Users/martin/git/gijonair-android/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
